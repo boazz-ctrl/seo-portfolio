@@ -215,22 +215,45 @@
                     ])
                 ]),
 
-                // Hero Metrics
-                React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6 mb-10', key: 'hero-metrics' },
-                    heroMetrics.map((metric, idx) =>
+                // Hero Metrics - 2 on top, 1 below on mobile
+                React.createElement('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-10', key: 'hero-metrics' }, [
+                    React.createElement('div', { className: 'col-span-1' },
                         React.createElement('div', {
-                            key: idx,
-                            className: `bg-gradient-to-br ${metric.color} p-6 rounded-2xl shadow-lg text-white transform hover:scale-105 transition-all`
+                            className: `bg-gradient-to-br ${heroMetrics[0].color} p-4 md:p-6 rounded-2xl shadow-lg text-white h-full`
                         }, [
-                            React.createElement('div', { className: 'flex items-center gap-2 mb-3 opacity-90' }, [
-                                React.createElement('i', { 'data-lucide': metric.icon, className: 'w-5 h-5' }),
-                                React.createElement('p', { className: 'text-sm font-semibold' }, metric.label)
+                            React.createElement('div', { className: 'flex items-center gap-2 mb-2 md:mb-3 opacity-90' }, [
+                                React.createElement('i', { 'data-lucide': heroMetrics[0].icon, className: 'w-4 h-4 md:w-5 md:h-5' }),
+                                React.createElement('p', { className: 'text-xs md:text-sm font-semibold' }, heroMetrics[0].label)
                             ]),
-                            React.createElement('p', { className: 'text-5xl font-bold mb-2' }, metric.value),
-                            React.createElement('p', { className: 'text-sm opacity-90' }, metric.detail)
+                            React.createElement('p', { className: 'text-3xl md:text-5xl font-bold mb-1 md:mb-2' }, heroMetrics[0].value),
+                            React.createElement('p', { className: 'text-xs md:text-sm opacity-90' }, heroMetrics[0].detail)
+                        ])
+                    ),
+                    React.createElement('div', { className: 'col-span-1' },
+                        React.createElement('div', {
+                            className: `bg-gradient-to-br ${heroMetrics[1].color} p-4 md:p-6 rounded-2xl shadow-lg text-white h-full`
+                        }, [
+                            React.createElement('div', { className: 'flex items-center gap-2 mb-2 md:mb-3 opacity-90' }, [
+                                React.createElement('i', { 'data-lucide': heroMetrics[1].icon, className: 'w-4 h-4 md:w-5 md:h-5' }),
+                                React.createElement('p', { className: 'text-xs md:text-sm font-semibold' }, heroMetrics[1].label)
+                            ]),
+                            React.createElement('p', { className: 'text-3xl md:text-5xl font-bold mb-1 md:mb-2' }, heroMetrics[1].value),
+                            React.createElement('p', { className: 'text-xs md:text-sm opacity-90' }, heroMetrics[1].detail)
+                        ])
+                    ),
+                    React.createElement('div', { className: 'col-span-2 md:col-span-1' },
+                        React.createElement('div', {
+                            className: `bg-gradient-to-br ${heroMetrics[2].color} p-4 md:p-6 rounded-2xl shadow-lg text-white h-full`
+                        }, [
+                            React.createElement('div', { className: 'flex items-center gap-2 mb-2 md:mb-3 opacity-90' }, [
+                                React.createElement('i', { 'data-lucide': heroMetrics[2].icon, className: 'w-4 h-4 md:w-5 md:h-5' }),
+                                React.createElement('p', { className: 'text-xs md:text-sm font-semibold' }, heroMetrics[2].label)
+                            ]),
+                            React.createElement('p', { className: 'text-3xl md:text-5xl font-bold mb-1 md:mb-2' }, heroMetrics[2].value),
+                            React.createElement('p', { className: 'text-xs md:text-sm opacity-90' }, heroMetrics[2].detail)
                         ])
                     )
-                ),
+                ]),
 
                 // Chart Section
                 React.createElement('div', { className: 'bg-white p-6 md:p-8 rounded-2xl shadow-md border border-slate-200 mb-10', key: 'chart' }, [
@@ -302,7 +325,38 @@
                             'השוואה מפורטת: אוקטובר vs. ינואר'
                         ])
                     ),
-                    React.createElement('div', { className: 'overflow-x-auto scrollbar-hide' },
+                    // Mobile view - cards
+                    React.createElement('div', { className: 'md:hidden p-4 space-y-4' },
+                        comparisonData.map((row, idx) =>
+                            React.createElement('div', {
+                                key: idx,
+                                className: 'bg-slate-50 p-4 rounded-xl border border-slate-200'
+                            }, [
+                                React.createElement('p', { className: 'font-bold text-slate-900 mb-3 text-base' }, row.metric),
+                                React.createElement('div', { className: 'grid grid-cols-3 gap-3 mb-3' }, [
+                                    React.createElement('div', { className: 'text-center' }, [
+                                        React.createElement('p', { className: 'text-[10px] text-slate-500 uppercase mb-1' }, 'אוקטובר'),
+                                        React.createElement('p', { className: 'font-medium text-slate-600 text-sm' }, row.october)
+                                    ]),
+                                    React.createElement('div', { className: 'text-center' }, [
+                                        React.createElement('p', { className: 'text-[10px] text-blue-600 uppercase mb-1 font-bold' }, 'ינואר'),
+                                        React.createElement('p', { className: 'font-bold text-blue-600 text-base' }, row.january)
+                                    ]),
+                                    React.createElement('div', { className: 'text-center' }, [
+                                        React.createElement('p', { className: 'text-[10px] text-slate-500 uppercase mb-1' }, 'שינוי'),
+                                        React.createElement('span', {
+                                            className: row.changeType === 'positive' ? 'bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold inline-block' :
+                                                       row.changeType === 'neutral' ? 'bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-medium inline-block' :
+                                                       'bg-slate-100 text-slate-700 px-2 py-1 rounded-full text-xs font-medium inline-block'
+                                        }, row.change)
+                                    ])
+                                ]),
+                                row.note && React.createElement('p', { className: 'text-slate-600 text-xs italic leading-relaxed pt-2 border-t border-slate-200' }, row.note)
+                            ])
+                        )
+                    ),
+                    // Desktop view - table
+                    React.createElement('div', { className: 'hidden md:block overflow-x-auto scrollbar-hide' },
                         React.createElement('table', { className: 'w-full text-sm min-w-[800px]' }, [
                             React.createElement('thead', { className: 'bg-slate-50 text-slate-600 text-xs uppercase tracking-wider' },
                                 React.createElement('tr', null, [
@@ -345,7 +399,7 @@
                         React.createElement('i', { 'data-lucide': 'lightbulb', className: 'w-6 h-6 text-amber-500' }),
                         'תובנות מרכזיות'
                     ]),
-                    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
+                    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6' },
                         keyInsights.map((insight, idx) => {
                             const colorClasses = {
                                 blue: 'bg-blue-50 border-blue-200 text-blue-700',
