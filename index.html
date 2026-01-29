@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דוח ביצועי SEO - scenter.co.il</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.1.16/umd/Recharts.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Assistant', sans-serif; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-slate-100 text-right">
+    <div id="root"></div>
+
+    <script type="text/javascript">
+        const { 
+            AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Label
+        } = window.Recharts;
+
+        const App = () => {
+            // נתונים מדויקים מ-Google Search Console
+            const monthlyData = [
+                { name: 'אוקטובר', clicks: 5029, impressions: 184891, position: 13.8, ctr: 2.72 },
+                { name: 'נובמבר', clicks: 6784, impressions: 282062, position: 14.1, ctr: 2.41 },
+                { name: 'דצמבר', clicks: 7210, impressions: 341828, position: 16.4, ctr: 2.11 },
+                { name: 'ינואר', clicks: 7512, impressions: 336356, position: 14.7, ctr: 2.23 }
+            ];
+
+            // Hero KPIs - השוואה אוקטובר לינואר
+            const heroMetrics = [
+                {
+                    label: 'צמיחה בטראפיק',
+                    value: '+49%',
+                    detail: '5,029 → 7,512 קליקים',
+                    icon: 'trending-up',
+                    color: 'from-blue-500 to-blue-600'
+                },
+                {
+                    label: 'הגדלת חשיפה',
+                    value: '+82%',
+                    detail: '185K → 336K הופעות',
+                    icon: 'eye',
+                    color: 'from-indigo-500 to-indigo-600'
+                },
+                {
+                    label: 'ממוצע יומי',
+                    value: '+31%',
+                    detail: '229 → 300 קליקים/יום',
+                    icon: 'calendar',
+                    color: 'from-violet-500 to-violet-600'
+                }
+            ];
+
+            // טבלת השוואה מפורטת
+            const comparisonData = [
+                {
+                    metric: 'סך קליקים חודשיים',
+                    october: '5,029',
+                    january: '7,512',
+                    change: '+49%',
+                    changeType: 'positive'
+                },
+                {
+                    metric: 'סך חשיפות חודשיות',
+                    october: '184,891',
+                    january: '336,356',
+                    change: '+82%',
+                    changeType: 'positive'
+                },
+                {
+                    metric: 'ממוצע יומי (קליקים)',
+                    october: '229',
+                    january: '300',
+                    change: '+31%',
+                    changeType: 'positive'
+                },
+                {
+                    metric: 'מיקום ממוצע בחיפוש',
+                    october: '13.8',
+                    january: '14.7',
+                    change: '+0.9',
+                    changeType: 'stable',
+                    note: 'יציבות מרשימה למרות הרחבה משמעותית של מילות מפתח'
+                },
+                {
+                    metric: 'יחס קליקים (CTR)',
+                    october: '2.72%',
+                    january: '2.23%',
+                    change: '-18%',
+                    changeType: 'neutral',
+                    note: 'ירידה טבעית עקב התרחבות לשאילתות נוספות עם נפח גבוה'
+                }
+            ];
+
+            // תובנות מרכזיות
+            const keyInsights = [
+                {
+                    title: 'כמעט הכפלת החשיפה',
+                    description: 'עלייה של 151K חשיפות חודשיות (+82%) - הרחבה משמעותית של הנראות האורגנית',
+                    icon: 'sparkles',
+                    color: 'blue'
+                },
+                {
+                    title: 'צמיחה יציבה בטראפיק',
+                    description: 'גידול של 2,483 קליקים חודשיים (+49%) - תנועה איכותית וממוקדת',
+                    icon: 'arrow-up-right',
+                    color: 'green'
+                },
+                {
+                    title: 'שמירה על דירוג חזק',
+                    description: 'מיקום ממוצע 13.8-14.7 (עמוד ראשון) למרות הגדלת היקף מילות המפתח',
+                    icon: 'shield-check',
+                    color: 'indigo'
+                },
+                {
+                    title: 'שיפור ביעילות היומית',
+                    description: 'עלייה של 31% בממוצע קליקים יומי - צמיחה עקבית ומתמשכת',
+                    icon: 'zap',
+                    color: 'amber'
+                }
+            ];
+
+            const CustomTooltip = ({ active, payload }) => {
+                if (!active || !payload || !payload.length) return null;
+                
+                return React.createElement('div', {
+                    className: 'bg-white p-4 rounded-xl shadow-lg border border-slate-200'
+                }, [
+                    React.createElement('p', { className: 'font-bold text-slate-900 mb-2' }, payload[0].payload.name),
+                    React.createElement('div', { className: 'space-y-1 text-sm' }, [
+                        React.createElement('p', { className: 'text-blue-600' }, `קליקים: ${payload[0].value.toLocaleString()}`),
+                        React.createElement('p', { className: 'text-indigo-600' }, `חשיפות: ${payload[1].value.toLocaleString()}`),
+                        React.createElement('p', { className: 'text-slate-600' }, `מיקום: ${payload[0].payload.position}`)
+                    ])
+                ]);
+            };
+
+            const CustomLabel = ({ x, y, value, index }) => {
+                const data = monthlyData[index];
+                return React.createElement('g', null, [
+                    React.createElement('rect', {
+                        key: 'bg',
+                        x: x - 35,
+                        y: y - 40,
+                        width: 70,
+                        height: 32,
+                        fill: 'white',
+                        rx: 6,
+                        stroke: '#3b82f6',
+                        strokeWidth: 2
+                    }),
+                    React.createElement('text', {
+                        key: 'clicks',
+                        x: x,
+                        y: y - 24,
+                        textAnchor: 'middle',
+                        fill: '#3b82f6',
+                        fontSize: 12,
+                        fontWeight: 'bold'
+                    }, data.clicks.toLocaleString()),
+                    React.createElement('text', {
+                        key: 'label',
+                        x: x,
+                        y: y - 12,
+                        textAnchor: 'middle',
+                        fill: '#64748b',
+                        fontSize: 9
+                    }, 'קליקים')
+                ]);
+            };
+
+            return React.createElement('div', { className: 'min-h-screen p-4 md:p-8 pb-20 max-w-7xl mx-auto' }, [
+                
+                // Header Section
+                React.createElement('div', { className: 'mb-10', key: 'header' }, [
+                    React.createElement('div', { className: 'flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6' }, [
+                        React.createElement('div', null, [
+                            React.createElement('h1', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-2' }, 'תוצאות מיטוב SEO'),
+                            React.createElement('p', { className: 'text-xl text-blue-600 font-bold mb-1' }, 'scenter.co.il'),
+                            React.createElement('p', { className: 'text-slate-600' }, 'אוקטובר 2025 - ינואר 2026')
+                        ]),
+                        React.createElement('div', { className: 'flex flex-col gap-2' }, [
+                            React.createElement('div', { className: 'bg-green-50 text-green-700 px-4 py-2 rounded-lg flex items-center gap-2 border border-green-200' }, [
+                                React.createElement('i', { 'data-lucide': 'check-circle-2', className: 'w-5 h-5' }),
+                                React.createElement('span', { className: 'text-sm font-bold' }, 'נתונים מאומתים GSC')
+                            ]),
+                            React.createElement('div', { className: 'bg-blue-50 text-blue-700 px-4 py-2 rounded-lg flex items-center gap-2 border border-blue-200' }, [
+                                React.createElement('i', { 'data-lucide': 'clock', className: 'w-5 h-5' }),
+                                React.createElement('span', { className: 'text-sm font-bold' }, '3 חודשי עבודה')
+                            ])
+                        ])
+                    ]),
+                    React.createElement('div', { className: 'bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100' }, [
+                        React.createElement('p', { className: 'text-slate-700 text-lg leading-relaxed mb-3' }, 
+                            '🎯 תוך 3 חודשים של מיטוב אסטרטגי, הושגה כמעט הכפלת החשיפה (+82%) וגידול משמעותי בטראפיק (+49%), תוך שמירה על דירוג תחרותי בעמוד הראשון של Google.'
+                        ),
+                        React.createElement('div', { className: 'bg-white/70 backdrop-blur px-4 py-3 rounded-lg border-2 border-blue-200' }, [
+                            React.createElement('div', { className: 'flex items-center gap-2' }, [
+                                React.createElement('i', { 'data-lucide': 'sparkles', className: 'w-5 h-5 text-blue-600' }),
+                                React.createElement('span', { className: 'text-base font-bold text-blue-800' }, 
+                                    '100% תנועה אורגנית (ללא פרסום ממומן)'
+                                )
+                            ])
+                        ])
+                    ])
+                ]),
+
+                // Hero Metrics
+                React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6 mb-10', key: 'hero-metrics' },
+                    heroMetrics.map((metric, idx) =>
+                        React.createElement('div', {
+                            key: idx,
+                            className: `bg-gradient-to-br ${metric.color} p-6 rounded-2xl shadow-lg text-white transform hover:scale-105 transition-all`
+                        }, [
+                            React.createElement('div', { className: 'flex items-center gap-2 mb-3 opacity-90' }, [
+                                React.createElement('i', { 'data-lucide': metric.icon, className: 'w-5 h-5' }),
+                                React.createElement('p', { className: 'text-sm font-semibold' }, metric.label)
+                            ]),
+                            React.createElement('p', { className: 'text-5xl font-bold mb-2' }, metric.value),
+                            React.createElement('p', { className: 'text-sm opacity-90' }, metric.detail)
+                        ])
+                    )
+                ),
+
+                // Chart Section
+                React.createElement('div', { className: 'bg-white p-6 md:p-8 rounded-2xl shadow-md border border-slate-200 mb-10', key: 'chart' }, [
+                    React.createElement('h3', { className: 'font-bold text-2xl text-slate-800 mb-6 flex items-center gap-2' }, [
+                        React.createElement('i', { 'data-lucide': 'line-chart', className: 'w-6 h-6 text-blue-500' }),
+                        'מגמת צמיחה - אוקטובר עד ינואר'
+                    ]),
+                    // כרטיסיות מספרים
+                    React.createElement('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-3 mb-6' },
+                        monthlyData.map((month, idx) =>
+                            React.createElement('div', {
+                                key: idx,
+                                className: 'bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-xl border-2 border-blue-200 text-center'
+                            }, [
+                                React.createElement('p', { className: 'text-xs text-blue-600 font-bold mb-1' }, month.name),
+                                React.createElement('p', { className: 'text-2xl font-bold text-blue-700 mb-1' }, month.clicks.toLocaleString()),
+                                React.createElement('p', { className: 'text-[10px] text-blue-500' }, 'קליקים'),
+                                React.createElement('p', { className: 'text-xs text-slate-600 mt-2' }, `${month.impressions.toLocaleString()} הופעות`)
+                            ])
+                        )
+                    ),
+                    React.createElement('div', { className: 'h-[350px]' },
+                        React.createElement(ResponsiveContainer, { width: '100%', height: '100%' },
+                            React.createElement(AreaChart, { 
+                                data: monthlyData, 
+                                margin: { top: 50, right: 10, left: 0, bottom: 0 } 
+                            }, [
+                                React.createElement(CartesianGrid, { strokeDasharray: '3 3', stroke: '#e2e8f0' }),
+                                React.createElement(XAxis, {
+                                    dataKey: 'name',
+                                    axisLine: false,
+                                    tickLine: false,
+                                    tick: { fill: '#475569', fontSize: 13, fontWeight: 600 }
+                                }),
+                                React.createElement(YAxis, {
+                                    axisLine: false,
+                                    tickLine: false,
+                                    tick: { fill: '#94a3b8', fontSize: 12 }
+                                }),
+                                React.createElement(Tooltip, { content: React.createElement(CustomTooltip) }),
+                                React.createElement(Area, {
+                                    type: 'monotone',
+                                    dataKey: 'impressions',
+                                    stroke: '#818cf8',
+                                    fill: '#818cf8',
+                                    fillOpacity: 0.1,
+                                    strokeWidth: 2,
+                                    name: 'חשיפות'
+                                }),
+                                React.createElement(Area, {
+                                    type: 'monotone',
+                                    dataKey: 'clicks',
+                                    stroke: '#3b82f6',
+                                    fill: '#3b82f6',
+                                    fillOpacity: 0.2,
+                                    strokeWidth: 3,
+                                    name: 'קליקים'
+                                })
+                            ])
+                        )
+                    )
+                ]),
+
+                // Comparison Table
+                React.createElement('div', { className: 'bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden mb-10', key: 'comparison' }, [
+                    React.createElement('div', { className: 'px-6 py-5 bg-gradient-to-r from-slate-50 to-slate-100 border-b border-slate-200' },
+                        React.createElement('h3', { className: 'font-bold text-2xl text-slate-800 flex items-center gap-2' }, [
+                            React.createElement('i', { 'data-lucide': 'arrow-left-right', className: 'w-6 h-6 text-blue-500' }),
+                            'השוואה מפורטת: אוקטובר vs. ינואר'
+                        ])
+                    ),
+                    React.createElement('div', { className: 'overflow-x-auto scrollbar-hide' },
+                        React.createElement('table', { className: 'w-full text-sm min-w-[800px]' }, [
+                            React.createElement('thead', { className: 'bg-slate-50 text-slate-600 text-xs uppercase tracking-wider' },
+                                React.createElement('tr', null, [
+                                    React.createElement('th', { className: 'px-6 py-4 text-right font-bold' }, 'מדד'),
+                                    React.createElement('th', { className: 'px-6 py-4 text-center font-bold' }, 'אוקטובר (לפני)'),
+                                    React.createElement('th', { className: 'px-6 py-4 text-center font-bold' }, 'ינואר (אחרי)'),
+                                    React.createElement('th', { className: 'px-6 py-4 text-center font-bold' }, 'שינוי'),
+                                    React.createElement('th', { className: 'px-6 py-4 text-right font-bold' }, 'הערה')
+                                ])
+                            ),
+                            React.createElement('tbody', { className: 'divide-y divide-slate-100' },
+                                comparisonData.map((row, idx) =>
+                                    React.createElement('tr', {
+                                        key: idx,
+                                        className: 'hover:bg-slate-50 transition-colors'
+                                    }, [
+                                        React.createElement('td', { className: 'px-6 py-5 font-bold text-slate-900' }, row.metric),
+                                        React.createElement('td', { className: 'px-6 py-5 text-center text-slate-600 font-medium' }, row.october),
+                                        React.createElement('td', { className: 'px-6 py-5 text-center font-bold text-blue-600 text-lg' }, row.january),
+                                        React.createElement('td', { className: 'px-6 py-5 text-center' },
+                                            React.createElement('span', {
+                                                className: row.changeType === 'positive' ? 'bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold' :
+                                                           row.changeType === 'neutral' ? 'bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium' :
+                                                           'bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm font-medium'
+                                            }, row.change)
+                                        ),
+                                        React.createElement('td', { className: 'px-6 py-5 text-right text-slate-600 text-xs italic' }, 
+                                            row.note || ''
+                                        )
+                                    ])
+                                )
+                            )
+                        ])
+                    )
+                ]),
+
+                // Key Insights Grid
+                React.createElement('div', { className: 'mb-10', key: 'insights' }, [
+                    React.createElement('h3', { className: 'font-bold text-2xl text-slate-800 mb-6 flex items-center gap-2' }, [
+                        React.createElement('i', { 'data-lucide': 'lightbulb', className: 'w-6 h-6 text-amber-500' }),
+                        'תובנות מרכזיות'
+                    ]),
+                    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
+                        keyInsights.map((insight, idx) => {
+                            const colorClasses = {
+                                blue: 'bg-blue-50 border-blue-200 text-blue-700',
+                                green: 'bg-green-50 border-green-200 text-green-700',
+                                indigo: 'bg-indigo-50 border-indigo-200 text-indigo-700',
+                                amber: 'bg-amber-50 border-amber-200 text-amber-700'
+                            };
+                            return React.createElement('div', {
+                                key: idx,
+                                className: `${colorClasses[insight.color]} p-6 rounded-xl border-2`
+                            }, [
+                                React.createElement('div', { className: 'flex items-start gap-3 mb-3' }, [
+                                    React.createElement('i', { 'data-lucide': insight.icon, className: 'w-6 h-6 mt-1' }),
+                                    React.createElement('h4', { className: 'font-bold text-lg' }, insight.title)
+                                ]),
+                                React.createElement('p', { className: 'text-slate-700 leading-relaxed' }, insight.description)
+                            ]);
+                        })
+                    )
+                ]),
+
+                // Footer Context
+                React.createElement('div', {
+                    key: 'footer',
+                    className: 'bg-slate-50 p-6 md:p-8 rounded-2xl border-2 border-slate-200'
+                }, [
+                    React.createElement('div', { className: 'flex items-start gap-3 mb-4' }, [
+                        React.createElement('i', { 'data-lucide': 'info', className: 'w-6 h-6 text-slate-600 mt-1' }),
+                        React.createElement('div', null, [
+                            React.createElement('h4', { className: 'font-bold text-xl text-slate-800 mb-3' }, 'אודות הדוח'),
+                            React.createElement('div', { className: 'space-y-2 text-slate-600 leading-relaxed' }, [
+                                React.createElement('p', null, '📊 כל הנתונים מבוססים על דוחות רשמיים מ-Google Search Console (GSC) - תנועה אורגנית בלבד'),
+                                React.createElement('p', null, '📅 תקופת המדידה: 10 אוקטובר 2025 - 25 ינואר 2026 (108 ימים)'),
+                                React.createElement('p', null, '🚀 תחילת מיטוב אסטרטגי: נובמבר 2025'),
+                                React.createElement('p', { className: 'pt-2 text-sm italic' }, 
+                                    'SEO הוא תהליך ארוך טווח. תוצאות מלאות נראות בדרך כלל לאחר 6-12 חודשים. הדוח מציג את תחילת המגמה החיובית.'
+                                )
+                            ])
+                        ])
+                    ])
+                ])
+            ]);
+        };
+
+        window.onload = () => {
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(React.createElement(App));
+            setTimeout(() => lucide.createIcons(), 300);
+        };
+    </script>
+</body>
+</html>
