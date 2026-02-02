@@ -28,34 +28,34 @@
         } = window.Recharts;
 
         const App = () => {
-            // נתונים מדויקים מ-Google Search Console (10 אוקטובר - 29 ינואר 2026)
+            // נתונים מדויקים מ-Google Search Console (10 אוקטובר - 31 ינואר 2026)
             const monthlyData = [
                 { name: 'אוקטובר', clicks: 5029, impressions: 184891, position: 13.8, ctr: 2.74 },
                 { name: 'נובמבר', clicks: 6784, impressions: 282062, position: 14.1, ctr: 2.40 },
                 { name: 'דצמבר', clicks: 7210, impressions: 341828, position: 16.4, ctr: 2.10 },
-                { name: 'ינואר', clicks: 8868, impressions: 396864, position: 14.5, ctr: 2.23 }
+                { name: 'ינואר', clicks: 9342, impressions: 421307, position: 14.7, ctr: 2.21 }
             ];
 
             // Hero KPIs - השוואה אוקטובר לינואר
             const heroMetrics = [
                 {
                     label: 'צמיחה בטראפיק',
-                    value: '+76%',
-                    detail: '5,029 → 8,868 קליקים',
+                    value: '+86%',
+                    detail: '5,029 → 9,342 קליקים',
                     icon: 'trending-up',
                     color: 'from-blue-500 to-blue-600'
                 },
                 {
                     label: 'הגדלת חשיפה',
-                    value: '+115%',
-                    detail: '185K → 397K הופעות',
+                    value: '+128%',
+                    detail: '185K → 421K הופעות',
                     icon: 'eye',
                     color: 'from-purple-500 to-purple-600'
                 },
                 {
                     label: 'שיפור יומי',
-                    value: '+34%',
-                    detail: '229 → 306 קליקים ליום',
+                    value: '+32%',
+                    detail: '229 → 301 קליקים ליום',
                     icon: 'calendar',
                     color: 'from-green-500 to-green-600'
                 }
@@ -66,13 +66,13 @@
                 {
                     icon: 'target',
                     title: 'צמיחה עקבית',
-                    description: 'עלייה מתמדת בטראפיק בכל חודש - מ-5,029 קליקים באוקטובר ל-8,868 בינואר',
+                    description: 'עלייה מתמדת בטראפיק בכל חודש - מ-5,029 קליקים באוקטובר ל-9,342 בינואר',
                     color: 'text-blue-600'
                 },
                 {
                     icon: 'trending-up',
                     title: 'הרחבת טווח',
-                    description: 'הכפלת החשיפה (+115%) מעידה על הרחבה משמעותית של מילות המפתח והנוכחות במנועי החיפוש',
+                    description: 'יותר מכפילה בחשיפה (+128%) מעידה על הרחבה משמעותית של מילות המפתח והנוכחות במנועי החיפוש',
                     color: 'text-purple-600'
                 },
                 {
@@ -94,31 +94,31 @@
                 { 
                     metric: 'קליקים', 
                     oct: '5,029', 
-                    jan: '8,868', 
-                    change: '+76%', 
+                    jan: '9,342', 
+                    change: '+86%', 
                     positive: true,
-                    note: 'עלייה מרשימה של 3,839 קליקים חדשים'
+                    note: 'עלייה מרשימה של 4,313 קליקים חדשים'
                 },
                 { 
                     metric: 'הופעות', 
                     oct: '184,891', 
-                    jan: '396,864', 
-                    change: '+115%', 
+                    jan: '421,307', 
+                    change: '+128%', 
                     positive: true,
                     note: 'יותר מכפילה - הרחבה משמעותית של נוכחות דיגיטלית'
                 },
                 { 
                     metric: 'מיקום ממוצע', 
                     oct: '13.8', 
-                    jan: '14.5', 
-                    change: '+0.7', 
+                    jan: '14.7', 
+                    change: '0.9+', 
                     positive: false,
                     note: 'יציבות מרשימה למרות הרחבה משמעותית של מילות מפתח'
                 },
                 { 
                     metric: 'CTR', 
                     oct: '2.74%', 
-                    jan: '2.23%', 
+                    jan: '2.21%', 
                     change: '-19%', 
                     positive: false,
                     note: 'ירידה טבעית עקב התרחבות לשאילתות נוספות עם נפח גבוה'
@@ -126,8 +126,8 @@
                 { 
                     metric: 'ממוצע יומי', 
                     oct: '229', 
-                    jan: '306', 
-                    change: '+34%', 
+                    jan: '301', 
+                    change: '+32%', 
                     positive: true,
                     note: 'שיפור משמעותי בביצועים היומיים'
                 }
@@ -143,7 +143,7 @@
                                 React.createElement('h1', { className: 'text-2xl md:text-4xl font-bold text-slate-900 mb-2' }, 'דוח ביצועי SEO'),
                                 React.createElement('p', { className: 'text-sm md:text-lg text-slate-600' }, 'scenter.co.il | אוקטובר 2025 - ינואר 2026'),
                                 React.createElement('p', { className: 'text-xs md:text-sm text-slate-500 mt-1 md:mt-2' }, 
-                                    'תקופה: 10 אוקטובר 2025 - 29 ינואר 2026 (111 ימים) | מקור נתונים: Google Search Console'
+                                    'תקופה: 10 אוקטובר 2025 - 31 ינואר 2026 (113 ימים) | מקור נתונים: Google Search Console'
                                 )
                             ),
                             React.createElement('div', { className: 'flex items-center gap-2 md:gap-3 bg-blue-50 px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-xl border border-blue-200' },
@@ -160,9 +160,9 @@
                         )
                     ),
 
-                    // Hero Metrics
+                    // Hero Metrics - 2 למעלה, 1 למטה (רחב) במובייל
                     React.createElement('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6' },
-                        heroMetrics.map((metric, idx) =>
+                        heroMetrics.slice(0, 2).map((metric, idx) =>
                             React.createElement('div', { 
                                 key: idx,
                                 className: 'bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-6 border border-slate-200 hover:shadow-xl transition-shadow'
@@ -174,6 +174,18 @@
                                 React.createElement('p', { className: 'text-3xl md:text-5xl font-bold text-slate-900 mb-1 md:mb-2' }, metric.value),
                                 React.createElement('p', { className: 'text-xs md:text-sm text-slate-500' }, metric.detail)
                             )
+                        ),
+                        // השיפור יומי - רחב מלא במובייל
+                        React.createElement('div', { 
+                            key: 2,
+                            className: 'col-span-2 md:col-span-1 bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-6 border border-slate-200 hover:shadow-xl transition-shadow'
+                        },
+                            React.createElement('div', { className: `bg-gradient-to-br ${heroMetrics[2].color} text-white p-2 md:p-3 rounded-lg md:rounded-xl inline-block mb-3 md:mb-4` },
+                                React.createElement('i', { 'data-lucide': heroMetrics[2].icon, className: 'w-5 h-5 md:w-6 md:h-6' })
+                            ),
+                            React.createElement('p', { className: 'text-xs md:text-sm text-slate-600 mb-1 md:mb-2' }, heroMetrics[2].label),
+                            React.createElement('p', { className: 'text-3xl md:text-5xl font-bold text-slate-900 mb-1 md:mb-2' }, heroMetrics[2].value),
+                            React.createElement('p', { className: 'text-xs md:text-sm text-slate-500' }, heroMetrics[2].detail)
                         )
                     ),
 
@@ -183,7 +195,7 @@
                             React.createElement('i', { 'data-lucide': 'bar-chart-3', className: 'w-5 h-5 md:w-6 md:h-6 text-blue-600' }),
                             'נתונים חודשיים'
                         ),
-                        React.createElement('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6' },
+                        React.createElement('div', { className: 'grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4 mb-6' },
                             monthlyData.map((month, idx) =>
                                 React.createElement('div', { 
                                     key: idx,
@@ -349,7 +361,7 @@
                     // Footer
                     React.createElement('div', { className: 'text-center text-xs md:text-sm text-slate-500 py-4 md:py-6' },
                         React.createElement('p', null, '📊 דוח זה מבוסס על נתונים אמיתיים מ-Google Search Console'),
-                        React.createElement('p', { className: 'mt-2' }, 'תקופה: 10 אוקטובר 2025 - 29 ינואר 2026 (111 ימים)')
+                        React.createElement('p', { className: 'mt-2' }, 'תקופה: 10 אוקטובר 2025 - 31 ינואר 2026 (113 ימים)')
                     )
                 )
             );
