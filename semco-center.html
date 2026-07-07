@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>תיק עבודות SEO - סמקו סנטר</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Heebo', sans-serif;
-            background-color: #f3f4f6;
+            background-color: #eef2f5;
         }
-        /* Custom scrollbar for table container if needed on small screens */
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
         .table-container::-webkit-scrollbar {
             height: 8px;
         }
@@ -19,31 +21,36 @@
             background-color: #cbd5e1;
             border-radius: 4px;
         }
+        .gauge-track {
+            background-color: #dbeafe;
+        }
+        .gauge-fill {
+            background: linear-gradient(90deg, #0EA5B7, #0F3D5C);
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4 md:p-8">
 
     <!-- Portfolio Card -->
     <div class="max-w-5xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
-        
+
         <!-- Header Section -->
-        <div class="bg-gradient-to-l from-blue-700 to-blue-500 p-8 text-white relative overflow-hidden">
-            <!-- Decorative background element -->
+        <div class="bg-gradient-to-l from-[#0F3D5C] to-[#0EA5B7] p-8 text-white relative overflow-hidden">
             <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-            
+
             <div class="relative z-10">
                 <div class="flex items-center gap-3 mb-2">
-                    <span class="bg-blue-800 text-blue-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    <span class="bg-white/15 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         Case Study
                     </span>
-                    <span class="bg-indigo-800 text-indigo-100 text-xs font-bold px-3 py-1 rounded-full">
+                    <span class="bg-white/15 text-white text-xs font-bold px-3 py-1 rounded-full">
                         SEO / GEO
                     </span>
                 </div>
                 <h1 class="text-3xl md:text-4xl font-extrabold mb-2 tracking-tight">
                     הישגי קידום אורגני – סמקו סנטר
                 </h1>
-                <p class="text-blue-100 text-lg max-w-2xl">
+                <p class="text-blue-50 text-lg max-w-2xl">
                     סיכום נתוני מיקומים במנוע החיפוש של גוגל עבור מילות מפתח תחרותיות בתחום המיזוג וחלקי החילוף.
                 </p>
             </div>
@@ -62,6 +69,9 @@
                     כל החיפושים בטבלה בוצעו <strong>בתוספת המילה "ישראל"</strong> (לדוגמה: "מנוע למזגן ישראל").
                     אסטרטגיה זו מוכיחה שהדירוגים הם ברמה הארצית ואינם מוטים או מוגבלים לחיפוש מקומי/עירוני (Local SEO).
                 </p>
+                <p class="text-blue-700 text-xs mt-2 font-medium">
+                    * לפי מדידות שבוצעו ביולי 2026. דירוגים במנועי חיפוש עשויים להשתנות לאורך זמן.
+                </p>
             </div>
         </div>
 
@@ -73,88 +83,169 @@
                         <th class="py-4 px-6 font-bold">מילת חיפוש מדויקת</th>
                         <th class="py-4 px-6 font-bold text-center">עמוד בגוגל</th>
                         <th class="py-4 px-6 font-bold text-center">מיקום</th>
-                        <th class="py-4 px-6 font-bold text-center">נוכחות בסקירות AI (Google)</th>
+                        <th class="py-4 px-6 font-bold text-center w-40">מד ביצועים</th>
+                        <th class="py-4 px-6 font-bold text-center">נוכחות ב-AI</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700 divide-y divide-gray-100">
-                    
-                    <!-- Row Generating Script Logic applied manually for the static output -->
-                    <!-- Function to generate rows -->
-                    <script>
-                        const data = [
-                            { term: "מנוע למזגן", page: 1, rank: 1, ai: true },
-                            { term: "קבל מזגן", page: 1, rank: 3, ai: true },
-                            { term: "מאיץ למזגן", page: 1, rank: 2, ai: true },
-                            { term: "תרמוסטט למזגן", page: 1, rank: 1, ai: true },
-                            { term: "חלפים למזגן", page: 1, rank: 3, ai: true },
-                            { term: "חלקי חילוף למזגן", page: 1, rank: 2, ai: true },
-                            { term: "מכשיר שטיפה למזגן", page: 1, rank: 1, ai: true },
-                            { term: "ערכת שטיפה למזגן", page: 1, rank: 1, ai: true },
-                            { term: "גרניק נטען", page: 1, rank: 3, ai: true },
-                            { term: "שטיפה למזגן", page: 1, rank: 5, ai: true },
-                            { term: "מכשיר שטיפה למזגן", page: 1, rank: 1, ai: true }, // As appeared in original image
-                            { term: "שלט מקורי למזגן", page: 1, rank: 4, ai: true },
-                            { term: "מדחס למזגן", page: 1, rank: 6, ai: true },
-                            { term: "כרטיס פיקוד למזגן", page: 1, rank: 4, ai: true },
-                            { term: "חומר חיטוי למזגן", page: 1, rank: 4, ai: true },
-                            { term: "חומר ניקוי למזגן", page: 1, rank: 2, ai: true },
-                            { term: "ספרי למזגן", page: 1, rank: 4, ai: true }
-                        ];
 
-                        data.forEach((item, index) => {
-                            let rankStyle = "bg-gray-100 text-gray-700 font-medium";
-                            let rankIcon = "";
-                            
-                            if (item.rank === 1) {
-                                rankStyle = "bg-yellow-100 text-yellow-800 font-bold border border-yellow-200 shadow-sm";
-                                rankIcon = "🥇 ";
-                            } else if (item.rank === 2) {
-                                rankStyle = "bg-gray-200 text-gray-800 font-bold border border-gray-300 shadow-sm";
-                                rankIcon = "🥈 ";
-                            } else if (item.rank === 3) {
-                                rankStyle = "bg-orange-100 text-orange-800 font-bold border border-orange-200 shadow-sm";
-                                rankIcon = "🥉 ";
-                            }
+                    <!-- rank 1 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">מנוע למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-yellow-100 text-yellow-800 font-bold border border-yellow-200 shadow-sm">🥇 מיקום 1</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:100%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
 
-                            const rowHtml = `
-                                <tr class="hover:bg-blue-50/50 transition-colors duration-150 group">
-                                    <td class="py-4 px-6">
-                                        <div class="flex items-center gap-2">
-                                            <span class="font-semibold text-gray-900 text-base">${item.term}</span>
-                                            <span class="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-100 px-2 py-0.5 rounded">
-                                                + ישראל
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td class="py-4 px-6 text-center">
-                                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold">
-                                            ${item.page}
-                                        </span>
-                                    </td>
-                                    <td class="py-4 px-6 text-center">
-                                        <span class="inline-block px-3 py-1 rounded-full text-sm ${rankStyle}">
-                                            ${rankIcon} מיקום ${item.rank}
-                                        </span>
-                                    </td>
-                                    <td class="py-4 px-6 text-center">
-                                        <div class="flex justify-center">
-                                            <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                                </svg>
-                                                כן
-                                            </span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            `;
-                            document.write(rowHtml);
-                        });
-                    </script>
+                    <!-- rank 1 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">תרמוסטט למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-yellow-100 text-yellow-800 font-bold border border-yellow-200 shadow-sm">🥇 מיקום 1</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:100%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 1 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">מכשיר שטיפה למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-yellow-100 text-yellow-800 font-bold border border-yellow-200 shadow-sm">🥇 מיקום 1</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:100%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 1 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">ערכת שטיפה למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-yellow-100 text-yellow-800 font-bold border border-yellow-200 shadow-sm">🥇 מיקום 1</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:100%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 1 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">כיסוי לשטיפת מזגנים</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-yellow-100 text-yellow-800 font-bold border border-yellow-200 shadow-sm">🥇 מיקום 1</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:100%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 2 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">מאיץ למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 font-bold border border-gray-300 shadow-sm">🥈 מיקום 2</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:88%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 2 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">חלקי חילוף למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 font-bold border border-gray-300 shadow-sm">🥈 מיקום 2</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:88%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 2 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">חומר ניקוי למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 font-bold border border-gray-300 shadow-sm">🥈 מיקום 2</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:88%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 3 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">קבל מזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-orange-100 text-orange-800 font-bold border border-orange-200 shadow-sm">🥉 מיקום 3</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:76%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 3 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">חלפים למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-orange-100 text-orange-800 font-bold border border-orange-200 shadow-sm">🥉 מיקום 3</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:76%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 3 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">גרניק נטען</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-orange-100 text-orange-800 font-bold border border-orange-200 shadow-sm">🥉 מיקום 3</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:76%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 3 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">מעיל לשטיפת מזגנים</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-orange-100 text-orange-800 font-bold border border-orange-200 shadow-sm">🥉 מיקום 3</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:76%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 4 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">שלט מקורי למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700 font-medium">מיקום 4</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:64%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 4 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">כרטיס פיקוד למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700 font-medium">מיקום 4</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:64%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 4 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">חומר חיטוי למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700 font-medium">מיקום 4</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:64%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 4 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">ספרי למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700 font-medium">מיקום 4</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:64%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
+                    <!-- rank 6 -->
+                    <tr class="hover:bg-blue-50/50 transition-colors duration-150">
+                        <td class="py-4 px-6"><span class="font-semibold text-gray-900 text-base">מדחס למזגן</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold mono">1</span></td>
+                        <td class="py-4 px-6 text-center"><span class="inline-block px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700 font-medium">מיקום 6</span></td>
+                        <td class="py-4 px-6"><div class="gauge-track rounded-full h-2 w-full"><div class="gauge-fill rounded-full h-2" style="width:40%"></div></div></td>
+                        <td class="py-4 px-6 text-center"><div class="flex justify-center"><span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium border border-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>כן</span></div></td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
-        
+
         <!-- Footer / Summary -->
         <div class="bg-gray-50 border-t border-gray-200 p-6 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="text-sm text-gray-500">
@@ -174,3 +265,4 @@
 
 </body>
 </html>
+
