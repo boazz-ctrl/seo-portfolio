@@ -10,6 +10,7 @@
     --navy:#0F3D5C; --teal:#0EA5B7;
   }
   *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
   body{margin:0;background:#eef2f5;font-family:'Heebo',sans-serif;padding:32px 16px;display:flex;justify-content:center}
   .mono{font-family:'JetBrains Mono',monospace}
   .card{width:860px;max-width:100%;background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:22px;box-shadow:0 24px 60px -24px rgba(15,61,92,.35);overflow:hidden}
@@ -46,6 +47,52 @@
   .gauge > div{height:100%;border-radius:999px;width:0;transition:width 1.3s cubic-bezier(.22,1,.36,1)}
   .ai-chip{display:inline-flex;align-items:center;gap:4px;background:#ECFDF5;color:#059669;padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:700;border:1px solid #D1FAE5}
   .foot{background:#F8FAFC;border-top:1px solid #EEF2F5;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .table-wrap{overflow-x:visible;padding:10px 0 0}
+
+  @media (max-width: 640px){
+    body{padding:0;background:#fff;display:block}
+    .card{width:100%;max-width:100%;border:0;border-radius:0;box-shadow:none}
+    .hero{padding:26px 18px 24px}
+    .hero .orb{width:230px;height:230px}
+    .hero [style*="display:flex"][style*="gap:8px"]{flex-wrap:wrap}
+    .hero [style*="display:flex"][style*="gap:14px"][style*="margin-top:26px"]{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px!important;margin-top:20px!important}
+    .stat{min-width:0;border-radius:14px;padding:12px 8px;text-align:center}
+    .stat .num{font-size:30px}
+    .stat .lbl{font-size:11px;line-height:1.35}
+    h1{font-size:25px;line-height:1.18;margin-bottom:10px;letter-spacing:0}
+    .sub{font-size:14px;line-height:1.55;max-width:none}
+    div[style*="padding:22px 40px 0"],
+    div[style*="padding:24px 40px 6px"],
+    div[style*="padding:18px 40px 6px"],
+    div[style*="padding:6px 40px 2px"]{padding-left:16px!important;padding-right:16px!important}
+    .info{padding:14px;gap:10px;border-radius:14px}
+    .info .ico{width:32px;height:32px;font-size:16px}
+    .row-flex{gap:8px}
+    .row-flex > span:first-child{width:58px!important;font-size:12px!important}
+    .bar-track{height:13px}
+    .chip{padding:7px 11px;font-size:12.5px;border-radius:9px}
+    .table-wrap{padding:10px 12px 4px;overflow-x:visible!important}
+    table,thead,tbody,tr,td{display:block;width:100%}
+    table{border-collapse:separate;border-spacing:0}
+    thead{display:none}
+    tbody tr{border:1px solid #E2E8F0;border-radius:14px;margin:0 0 10px;background:#fff;box-shadow:0 10px 24px -20px rgba(15,61,92,.45);overflow:hidden}
+    td,td.kw,td.ai,td.c{display:grid;grid-template-columns:minmax(82px,36%) minmax(0,1fr);align-items:center;gap:10px;text-align:right!important;padding:10px 12px!important;border-top:1px solid #F1F5F9;min-width:0}
+    tbody tr td:first-child{border-top:0}
+    td::before{content:attr(data-label);font-size:11px;font-weight:800;color:#64748B;text-transform:none}
+    td.kw span{font-size:14px!important;line-height:1.35;overflow-wrap:anywhere}
+    .page-dot{width:28px;height:28px;justify-self:start}
+    .pos-pill,.ai-chip{justify-self:start;white-space:normal;text-align:center}
+    .gauge{width:100%;min-width:0}
+    .foot{padding:16px;display:grid;grid-template-columns:1fr;gap:8px;text-align:center}
+    .foot > div:last-child{justify-content:center;flex-wrap:wrap;gap:10px!important}
+  }
+
+  @media (max-width: 380px){
+    .hero [style*="display:flex"][style*="gap:14px"][style*="margin-top:26px"]{grid-template-columns:1fr}
+    .stat{display:flex;align-items:center;justify-content:space-between;text-align:right;padding:11px 13px}
+    .stat .lbl{margin-top:0}
+    td,td.kw,td.ai,td.c{grid-template-columns:76px minmax(0,1fr)}
+  }
 </style>
 </head>
 <body>
@@ -96,7 +143,7 @@
   <div style="padding:6px 40px 2px;font-size:12.5px;color:#94A3B8">מציג <b style="color:#0F3D5C" id="shown">17</b> מתוך 17 מילות מפתח</div>
 
   <!-- Table -->
-  <div style="overflow-x:auto;padding:10px 0 0">
+  <div class="table-wrap">
     <table>
       <thead>
         <tr>
@@ -164,11 +211,11 @@ function renderTable(){
     const pillBd = top3 ? c : '#E2E8F0';
     const medal = MEDAL[r.pos] || '';
     return `<tr>
-      <td class="kw"><span style="font-weight:700;color:#0F172A;font-size:15px">${r.kw}</span></td>
-      <td class="c"><span class="page-dot mono">1</span></td>
-      <td class="c"><span class="pos-pill" style="background:${pillBg};color:${pillFg};border:1px solid ${pillBd}">${medal} מיקום ${r.pos}</span></td>
-      <td><div class="gauge"><div style="background:${c}" data-w="${score(r.pos)}"></div></div></td>
-      <td class="ai"><span class="ai-chip">&#10003; כן</span></td>
+      <td class="kw" data-label="מילת חיפוש"><span style="font-weight:700;color:#0F172A;font-size:15px">${r.kw}</span></td>
+      <td class="c" data-label="עמוד"><span class="page-dot mono">1</span></td>
+      <td class="c" data-label="מיקום"><span class="pos-pill" style="background:${pillBg};color:${pillFg};border:1px solid ${pillBd}">${medal} מיקום ${r.pos}</span></td>
+      <td data-label="מד ביצועים"><div class="gauge"><div style="background:${c}" data-w="${score(r.pos)}"></div></div></td>
+      <td class="ai" data-label="AI"><span class="ai-chip">&#10003; כן</span></td>
     </tr>`;
   }).join('');
 
@@ -247,4 +294,3 @@ countUp('stat-ai', 100, '%');
 </script>
 </body>
 </html>
-
