@@ -86,6 +86,7 @@
     .mobile-prefix{display:inline;font-weight:800;color:#64748B}
     .mobile-meta{display:block;margin-top:7px;padding-top:7px;border-top:1px solid #F1F5F9;color:#334155;font-size:12.5px;font-weight:700;line-height:1.4}
     .mobile-meta b{color:#0F3D5C;font-weight:800}
+    .mobile-pos{display:inline-flex;align-items:center;justify-content:center;min-width:28px;margin:0 3px;padding:2px 8px;border-radius:999px;color:#fff!important;font-weight:900;line-height:1.25}
     .foot{padding:16px;display:grid;grid-template-columns:1fr;gap:8px;text-align:center}
     .foot > div:last-child{justify-content:center;flex-wrap:wrap;gap:10px!important}
   }
@@ -218,7 +219,7 @@ function renderTable(){
     const pillBd = top3 ? c : '#E2E8F0';
     const medal = MEDAL[r.pos] || '';
     return `<tr>
-      <td class="kw" data-label="מילת חיפוש"><span style="font-weight:700;color:#0F172A;font-size:15px"><span class="mobile-prefix">מילת חיפוש: </span>${r.kw}</span><div class="mobile-meta">עמוד <b>1</b> | מיקום <b>${r.pos}</b> | AI - <b>כן</b></div></td>
+      <td class="kw" data-label="מילת חיפוש"><span style="font-weight:700;color:#0F172A;font-size:15px"><span class="mobile-prefix">מילת חיפוש: </span>${r.kw}</span><div class="mobile-meta">עמוד <b>1</b> | מיקום <b class="mobile-pos" style="background:${c}">${r.pos}</b> | AI - <b>כן</b></div></td>
       <td class="c" data-label="עמוד"><span class="page-dot mono">1</span></td>
       <td class="c" data-label="מיקום"><span class="pos-pill" style="background:${pillBg};color:${pillFg};border:1px solid ${pillBd}">${medal} מיקום ${r.pos}</span></td>
       <td data-label="מד ביצועים"><div class="gauge"><div style="background:${c}" data-w="${score(r.pos)}"></div></div></td>
