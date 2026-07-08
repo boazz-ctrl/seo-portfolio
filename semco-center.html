@@ -48,6 +48,9 @@
   .ai-chip{display:inline-flex;align-items:center;gap:4px;background:#ECFDF5;color:#059669;padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:700;border:1px solid #D1FAE5}
   .foot{background:#F8FAFC;border-top:1px solid #EEF2F5;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
   .table-wrap{overflow-x:visible;padding:10px 0 0}
+  .legend{margin:10px 40px 2px;background:#FFF8E1;border:1px solid #FDE68A;border-radius:14px;padding:12px 14px;color:#334155;font-size:13px;line-height:1.55}
+  .legend b{color:#0F3D5C}
+  .mobile-prefix,.mobile-meta{display:none}
 
   @media (max-width: 640px){
     body{padding:0;background:#fff;display:block}
@@ -65,6 +68,7 @@
     div[style*="padding:24px 40px 6px"],
     div[style*="padding:18px 40px 6px"],
     div[style*="padding:6px 40px 2px"]{padding-left:16px!important;padding-right:16px!important}
+    .legend{margin:10px 16px 2px;padding:12px;font-size:12.5px;border-radius:12px}
     .info{padding:14px;gap:10px;border-radius:14px}
     .info .ico{width:32px;height:32px;font-size:16px}
     .row-flex{gap:8px}
@@ -75,14 +79,13 @@
     table,thead,tbody,tr,td{display:block;width:100%}
     table{border-collapse:separate;border-spacing:0}
     thead{display:none}
-    tbody tr{border:1px solid #E2E8F0;border-radius:14px;margin:0 0 10px;background:#fff;box-shadow:0 10px 24px -20px rgba(15,61,92,.45);overflow:hidden}
-    td,td.kw,td.ai,td.c{display:grid;grid-template-columns:minmax(82px,36%) minmax(0,1fr);align-items:center;gap:10px;text-align:right!important;padding:10px 12px!important;border-top:1px solid #F1F5F9;min-width:0}
-    tbody tr td:first-child{border-top:0}
-    td::before{content:attr(data-label);font-size:11px;font-weight:800;color:#64748B;text-transform:none}
+    tbody tr{border:1px solid #E2E8F0;border-radius:14px;margin:0 0 9px;background:#fff;box-shadow:0 10px 24px -20px rgba(15,61,92,.45);overflow:hidden}
+    td.kw{display:block;text-align:right!important;padding:12px 14px!important;border:0;min-width:0}
+    tbody tr td:not(.kw){display:none!important}
     td.kw span{font-size:14px!important;line-height:1.35;overflow-wrap:anywhere}
-    .page-dot{width:28px;height:28px;justify-self:start}
-    .pos-pill,.ai-chip{justify-self:start;white-space:normal;text-align:center}
-    .gauge{width:100%;min-width:0}
+    .mobile-prefix{display:inline;font-weight:800;color:#64748B}
+    .mobile-meta{display:block;margin-top:7px;padding-top:7px;border-top:1px solid #F1F5F9;color:#334155;font-size:12.5px;font-weight:700;line-height:1.4}
+    .mobile-meta b{color:#0F3D5C;font-weight:800}
     .foot{padding:16px;display:grid;grid-template-columns:1fr;gap:8px;text-align:center}
     .foot > div:last-child{justify-content:center;flex-wrap:wrap;gap:10px!important}
   }
@@ -91,7 +94,7 @@
     .hero [style*="display:flex"][style*="gap:14px"][style*="margin-top:26px"]{grid-template-columns:1fr}
     .stat{display:flex;align-items:center;justify-content:space-between;text-align:right;padding:11px 13px}
     .stat .lbl{margin-top:0}
-    td,td.kw,td.ai,td.c{grid-template-columns:76px minmax(0,1fr)}
+    td.kw{padding:11px 12px!important}
   }
 </style>
 </head>
@@ -141,6 +144,10 @@
 
   <!-- Count label -->
   <div style="padding:6px 40px 2px;font-size:12.5px;color:#94A3B8">מציג <b style="color:#0F3D5C" id="shown">17</b> מתוך 17 מילות מפתח</div>
+
+  <div class="legend">
+    <b>עמוד</b> = עמוד התוצאות בגוגל · <b>מיקום</b> = הדירוג בתוך העמוד · <b>AI</b> = הופעה בסקירות AI
+  </div>
 
   <!-- Table -->
   <div class="table-wrap">
@@ -211,7 +218,7 @@ function renderTable(){
     const pillBd = top3 ? c : '#E2E8F0';
     const medal = MEDAL[r.pos] || '';
     return `<tr>
-      <td class="kw" data-label="מילת חיפוש"><span style="font-weight:700;color:#0F172A;font-size:15px">${r.kw}</span></td>
+      <td class="kw" data-label="מילת חיפוש"><span style="font-weight:700;color:#0F172A;font-size:15px"><span class="mobile-prefix">מילת חיפוש: </span>${r.kw}</span><div class="mobile-meta">עמוד <b>1</b> | מיקום <b>${r.pos}</b> | AI - <b>כן</b></div></td>
       <td class="c" data-label="עמוד"><span class="page-dot mono">1</span></td>
       <td class="c" data-label="מיקום"><span class="pos-pill" style="background:${pillBg};color:${pillFg};border:1px solid ${pillBd}">${medal} מיקום ${r.pos}</span></td>
       <td data-label="מד ביצועים"><div class="gauge"><div style="background:${c}" data-w="${score(r.pos)}"></div></div></td>
